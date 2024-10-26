@@ -1,0 +1,17 @@
+meta {
+  name: atualizar categoria
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{host}}/categories/4
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name":"mauro doenti"
+  }
+}
