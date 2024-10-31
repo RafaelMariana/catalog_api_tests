@@ -2,6 +2,7 @@ package com.catalog.repositories;
 
 import com.catalog.entities.Product;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
@@ -39,6 +40,28 @@ public class ProductRepositoryTests {
         assertThat(savedProduct.getName()).isEqualTo("Test Product");
         product.setDate(Instant.now());
 
+    }
+    @Test
+    @DisplayName("")
+    public void updateShowIdChangeAndPersistDataWhenIdExist(){
+        //preparar os dados
+        Product product = new Product(1L,"Phone","Smartphone", 1200.00,"imgProduto",Instant.now());
+        //executar a ação
+        product.setName("Update Phone");
+        product.setPrice(15000.00);
+        product = repository.save(product);
+        //verificar se ação ocorreu como o esperado
+        Assertions.assertEquals("Update Phone",product.getName());
+    }
+    @Test
+    public void findyIdShouldReturnNonEmptyOptionalWhenExists(){
+        //preparar os dados
+        long existingId = 1L;
+        //executar a ação
+        Optional<Product> result = repository.findById(existingId);
+        //certificar se deu certo
+        //verificar se retornou um objeto
+        Assertions.assertTrue(result.isPresent());
     }
 
 }
