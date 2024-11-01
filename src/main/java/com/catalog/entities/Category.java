@@ -35,6 +35,13 @@ public class Category {
 		this.name = name;
 	}
 
+	public Category(String name, Long id, Instant createdAt, Instant updatedAt) {
+		this.name = name;
+		this.id = id;
+		this.createdAt = createdAt;
+		this.updatedAt = updatedAt;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -50,7 +57,15 @@ public class Category {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
+	public void setCreatedAt(Instant createdAt) {
+		this.createdAt = createdAt;
+	}
+
+	public void setUpdatedAt(Instant updatedAt) {
+		this.updatedAt = updatedAt;
+	}
+
 	public Instant getCreatedAt() {
 		return createdAt;
 	}
